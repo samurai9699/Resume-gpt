@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@layer base {
+  body {
+    @apply bg-slate-900 text-white font-inter;
+    background: radial-gradient(circle at 50% 50%, rgba(17, 24, 39, 1), rgba(2, 6, 23, 1));
+  }
+}
+
+@layer components {
+  .neon-border {
+    @apply relative rounded-xl overflow-hidden;
+    background: linear-gradient(45deg, #00f2fe, #4facfe, #0ea5e9);
+    padding: 1px;
+  }
+
+  .neon-border::before {
+    content: '';
+    @apply absolute inset-0 blur-xl opacity-50;
+    background: inherit;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-xl bg-white/10 rounded-xl border border-white/20;
+  }
+
+  .animated-gradient {
+    background: linear-gradient(
+      270deg,
+      #0ea5e9,
+      #6366f1,
+      #8b5cf6,
+      #0ea5e9
+    );
+    background-size: 400% 400%;
+    animation: gradient 8s ease infinite;
+  }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.star {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle var(--duration) ease-in-out infinite;
+  opacity: var(--opacity);
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: var(--opacity); }
+  50% { opacity: 0.2; }
+}
+
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .7; }
+}
